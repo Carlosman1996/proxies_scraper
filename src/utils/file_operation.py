@@ -7,9 +7,6 @@ import jsonschema
 from jsonschema import validate
 
 
-__author__ = "Carlos Manuel Molina Sotoca"
-
-
 class DirectoryOperations:
     @staticmethod
     def check_dir_exists(dir_path):

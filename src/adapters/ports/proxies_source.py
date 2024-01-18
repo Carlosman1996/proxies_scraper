@@ -1,11 +1,5 @@
 import enum
-from src.utils.pandas_operations import PandasOperations
 from src.utils.postman import Postman
-
-
-
-# TODO: refactor and set in general configuration file
-PandasOperations.set_printing_options()
 
 
 class Anonymity(enum.Enum):
@@ -15,20 +9,22 @@ class Anonymity(enum.Enum):
 
 
 class Proxies:
+    NAME = ""
     URL = ""
     HEADERS = {}
     MODEL = {
-        "ip_address": str,
-        "port": str,
-        "proxy": str,
-        "code": str,
-        "country": str,
-        "anonymity": bool,
-        "https": bool,
-        "last_checked": str,
-        "created_date": str,
+        "ip_address": None,
+        "port": None,
+        "proxy": None,
+        "country_code": None,
+        "country": None,
+        "anonymity": None,
+        "https": None,
+        "last_checked": None,
+        "created_date": None,
         "created_user": "ordillan",
-        "available": True
+        "available": None,
+        "source": None
     }
     MODEL_MAPPER = {}
     TIMEZONE = "Europe/Madrid"
@@ -73,7 +69,7 @@ class Proxies:
         return response
 
     def _dict_mapper(self, unmapped_dict) -> dict:
-        mapped_dict = self.MODEL_MAPPER.copy()
+        mapped_dict = self.MODEL.copy()
         for key, value in unmapped_dict.items():
             if key in self.MODEL_MAPPER.keys():
                 mapped_dict[self.MODEL_MAPPER[key]] = value

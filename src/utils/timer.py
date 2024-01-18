@@ -4,15 +4,12 @@ from dataclasses import dataclass, field
 from typing import Callable, ClassVar, Dict, Optional
 
 
-__author__ = "Carlos Manuel Molina Sotoca"
-
-
 @dataclass
 class Timer:
     timers: ClassVar[Dict[str, float]] = dict()
     name: Optional[str] = None
-    text: str = "Elapsed time: {:0.4f} seconds"
-    logger: Optional[Callable[[str], None]] = print
+    text: str = "Elapsed time: {:0.4f} seconds\n"
+    logger: Optional[Callable[..., None]] = print
     _start_time: Optional[float] = field(default=None, init=False, repr=False)
 
     def __post_init__(self) -> None:

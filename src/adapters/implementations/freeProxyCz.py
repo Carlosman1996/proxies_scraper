@@ -1,4 +1,4 @@
-from src.adapters.ports.proxies import Proxies
+from src.adapters.ports.proxies_source import Proxies
 
 
 # TODO:

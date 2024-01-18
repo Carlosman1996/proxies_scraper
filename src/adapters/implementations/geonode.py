@@ -1,9 +1,10 @@
-from src.adapters.ports.proxies import Proxies
+from src.adapters.ports.proxies_source import Proxies
 from src.utils.postman import Postman
-from src.utils.time import Time
+from src.utils.time_operations import Time
 
 
 class Geonode(Proxies):
+    NAME = "proxylist.geonode.com"
     URL = ("https://proxylist.geonode.com/api/proxy-list?limit=500&page=<page>&sort_by=lastChecked&sort_type=desc"
            "&protocols=http%2Chttps&anonymityLevel=elite&anonymityLevel=anonymous")
     HEADERS = {
@@ -15,7 +16,7 @@ class Geonode(Proxies):
     MODEL_MAPPER = {
         "ip": "ip_address",
         "port": "port",
-        "country": "code",
+        "country": "country_code",
         "anonymityLevel": "anonymity",
         "protocols": "https",
         "lastChecked": "last_checked"
@@ -49,6 +50,7 @@ class Geonode(Proxies):
                 proxy_model["https"] = self._type_converter(proxy_model["https"][0],
                                                             parameter_type="protocol")  # TODO: find element in list
                 proxy_model["last_checked"] = proxy_model["last_checked"]
+                proxy_model["source"] = self.NAME
 
                 proxy_model_list.append(proxy_model)
 

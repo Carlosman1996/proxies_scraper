@@ -1,9 +1,6 @@
 import json
 import pandas as pd
-from src.utils.file import FileOperations
-
-
-__author__ = "Carlos Manuel Molina Sotoca"
+from src.utils.file_operation import FileOperations
 
 
 class PandasOperations:

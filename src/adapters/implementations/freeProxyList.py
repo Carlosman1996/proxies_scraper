@@ -1,11 +1,12 @@
-from src.adapters.ports.proxies import Proxies
+from src.adapters.ports.proxies_source import Proxies
 from bs4 import BeautifulSoup
 
 from src.utils.postman import Postman
-from src.utils.time import Time
+from src.utils.time_operations import Time
 
 
 class FreeProxyList(Proxies):
+    NAME = "free-proxy-list.net"
     URL = "https://free-proxy-list.net/"
     TABLE_INDEXES = {
         0: "IP_Address",
@@ -20,12 +21,13 @@ class FreeProxyList(Proxies):
     MODEL_MAPPER = {
         "IP_Address": "ip_address",
         "Port": "port",
-        "Code": "code",
+        "Code": "country_code",
         "Country": "country",
         "Anonymity": "anonymity",
         "Https": "https",
         "Last_Checked": "last_checked"
     }
+
 
     def get_proxies(self) -> list:
         proxy_model_list = []
@@ -54,6 +56,7 @@ class FreeProxyList(Proxies):
             proxy_model["created_date"] = Time.get_datetime(self.TIMEZONE)
             proxy_model["anonymity"] = self._type_converter(proxy_model["anonymity"], parameter_type="anonymity")
             proxy_model["https"] = self._type_converter(proxy_model["https"], parameter_type="affirmation")
+            proxy_model["source"] = self.NAME
 
             proxy_model_list.append(proxy_model)
         return proxy_model_list

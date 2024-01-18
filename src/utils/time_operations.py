@@ -3,9 +3,6 @@ import zoneinfo
 from datetime import datetime
 
 
-__author__ = "Carlos Manuel Molina Sotoca"
-
-
 ROOT_PATH = str(Path(__file__).parent.parent.resolve())
 
 

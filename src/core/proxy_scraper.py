@@ -11,7 +11,7 @@ class ProxyScraper:
         self._logger = Logger(module=FileOperations.get_file_name(__file__, False),
                               level="INFO")  # Set in configuration file
 
-    def _get_proxies(self):
+    def _get_page_proxies(self):
         proxies = []
         try:
             proxies = self.proxy_port.get_proxies()
@@ -23,19 +23,19 @@ class ProxyScraper:
         return proxies
 
     @staticmethod
-    def _filter_proxies(proxies, country_codes_filter, anonymity_filter, https):
+    def _filter_proxies(proxies, country_codes_filter, anonymity_filter, https_filter):
         if isinstance(country_codes_filter, list):
             proxies = [proxy for proxy in proxies if proxy['country_code'] in country_codes_filter]
         if isinstance(country_codes_filter, list):
             proxies = [proxy for proxy in proxies if proxy['anonymity'] in anonymity_filter]
         if isinstance(country_codes_filter, bool):
-            proxies = [proxy for proxy in proxies if proxy['https'] == https]
+            proxies = [proxy for proxy in proxies if proxy['https'] == https_filter]
         return proxies
 
-    def process_proxies(self,
-                        country_codes_filter: list = None,
-                        anonymity_filter: list = None,
-                        https: bool = None):
+    def get_proxies(self,
+                    country_codes_filter: list = None,
+                    anonymity_filter: list = None,
+                    https_filter: bool = None):
 
         self._logger.set_message(level="INFO",
                                  message_level="SUBSECTION",
@@ -43,10 +43,10 @@ class ProxyScraper:
 
         self._logger.set_message(level="INFO",
                                  message="Read proxies")
-        proxies = self._get_proxies()
+        proxies = self._get_page_proxies()
 
         self._logger.set_message(level="INFO",
                                  message="Filter proxies")
-        proxies = self._filter_proxies(proxies, country_codes_filter, anonymity_filter, https)
+        proxies = self._filter_proxies(proxies, country_codes_filter, anonymity_filter, https_filter)
 
         return proxies

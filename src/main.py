@@ -13,7 +13,7 @@ logger = Logger(module=FileOperations.get_file_name(__file__, False),
 
 
 @Timer(logger=logger, text="Proxies found in {:.2f} seconds\n")
-def main():
+def get_proxies(country_codes_filter, anonymity_filter, https_filter):
     logger.set_message(level="INFO",
                        message_level="SECTION",
                        message=f"Start proxies scraper")
@@ -28,8 +28,8 @@ def main():
 
     # Process proxies from different sources:
     processed_proxies = []
-    processed_proxies += freeProxyList_service.process_proxies()
-    processed_proxies += geonode_service.process_proxies()
+    processed_proxies += freeProxyList_service.get_proxies(country_codes_filter, anonymity_filter, https_filter)
+    processed_proxies += geonode_service.get_proxies(country_codes_filter, anonymity_filter, https_filter)
 
     logger.set_message(level="INFO",
                        message_level="SECTION",
@@ -38,6 +38,8 @@ def main():
     logger.set_message(level="INFO",
                        message=f"Number of proxies scraped: {len(processed_proxies)}")
 
+    return processed_proxies
+
 
 if __name__ == "__main__":
-    main()
+    get_proxies()

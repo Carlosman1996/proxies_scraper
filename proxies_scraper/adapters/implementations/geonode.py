@@ -1,6 +1,6 @@
-from src.adapters.ports.proxies_source import Proxies
-from src.utils.postman import Postman
-from src.utils.time_operations import Time
+from proxies_scraper.adapters.ports.proxies_source import Proxies
+from proxies_scraper.utils.postman import Postman
+from proxies_scraper.utils.time_operations import Time
 
 
 class Geonode(Proxies):

@@ -2,9 +2,6 @@ import os
 import glob
 import pickle
 import json
-import yaml
-import jsonschema
-from jsonschema import validate
 
 
 class DirectoryOperations:
@@ -100,58 +97,6 @@ class JsonFileOperations:
             json_obj.close()
 
     @staticmethod
-    def validate_data_schema_dict(json_data, data_schema):
-        try:
-            validate(instance=json_data, schema=data_schema)
-        except jsonschema.exceptions.ValidationError:
-            return False
-        return True
-
-    @staticmethod
-    def validate_data_schema_dict_of_dicts(json_data, data_schema):
-        if type(json_data) is dict:
-            sub_json_data = json_data.values()
-            if len(sub_json_data) == 0:
-                return False
-            else:
-                for sub_data in sub_json_data:
-                    if not JsonFileOperations.validate_data_schema_dict(sub_data, data_schema):
-                        return False
-                return True
-        else:
-            return False
-
-    @staticmethod
     def pretty_print_dict(dictionary):
         parsed = json.loads(json.dumps(dictionary, ensure_ascii=False).encode('utf8'))
         print(json.dumps(parsed, indent=4, sort_keys=True, ensure_ascii=False))
-
-
-class YamlFileOperations:
-    @staticmethod
-    def read_file(file_path):
-        FileOperations.check_file_exists(file_path)
-        with open(file_path, 'r', encoding="utf-8") as yaml_obj:
-            return yaml.load(yaml_obj, Loader=yaml.FullLoader)
-
-    @staticmethod
-    def write_file(file_path, string):
-        DirectoryOperations.create_dir_by_file_path(file_path)
-        with open(file_path, 'w', encoding="utf-8") as yaml_obj:
-            yaml.dump(string, yaml_obj, default_flow_style=False)
-            yaml_obj.close()
-
-
-class PickleFileOperations:
-    @staticmethod
-    def read_file(file_path):
-        FileOperations.check_file_exists(file_path)
-        with open(file_path, 'rb') as pickle_obj:
-            return pickle.load(pickle_obj)
-
-    @staticmethod
-    def write_file(file_path, data):
-        DirectoryOperations.create_dir_by_file_path(file_path)
-        with open(file_path, 'wb') as pickle_obj:
-            pickle.dump(data, pickle_obj)
-            pickle_obj.close()

@@ -1,5 +1,5 @@
 import enum
-from src.utils.postman import Postman
+from proxies_scraper.utils.postman import Postman
 
 
 class Anonymity(enum.Enum):
@@ -20,10 +20,7 @@ class Proxies:
         "country": None,
         "anonymity": None,
         "https": None,
-        "last_checked": None,
-        "created_date": None,
-        "created_user": "ordillan",
-        "available": None,
+        # "available": None, # TODO
         "source": None
     }
     MODEL_MAPPER = {}

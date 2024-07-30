@@ -1,6 +1,6 @@
-from src.adapters.ports.proxies_source import Proxies
-from src.utils.logger import Logger
-from src.utils.file_operation import FileOperations
+from proxies_scraper.adapters.ports.proxies_source import Proxies
+from proxies_scraper.utils.logger import Logger
+from proxies_scraper.utils.file_operation import FileOperations
 
 
 class ProxyScraper:
@@ -23,7 +23,7 @@ class ProxyScraper:
         return proxies
 
     @staticmethod
-    def _filter_proxies(proxies, country_codes_filter, anonymity_filter, https_filter):
+    def _filter_proxies(proxies: list, country_codes_filter: list, anonymity_filter: list, https_filter: bool):
         if isinstance(country_codes_filter, list):
             proxies = [proxy for proxy in proxies if proxy['country_code'] in country_codes_filter]
         if isinstance(country_codes_filter, list):

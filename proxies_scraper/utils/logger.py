@@ -1,6 +1,6 @@
 import enum
 import logging
-from src.utils.file_operation import FileOperations
+from proxies_scraper.utils.file_operation import FileOperations
 
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s : %(levelname)s : %(name)s : %(message)s')

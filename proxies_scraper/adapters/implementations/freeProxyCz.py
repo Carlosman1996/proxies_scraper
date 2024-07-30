@@ -1,4 +1,4 @@
-from src.adapters.ports.proxies_source import Proxies
+from proxies_scraper.adapters.ports.proxies_source import Proxies
 
 
 # TODO:

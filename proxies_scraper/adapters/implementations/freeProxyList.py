@@ -28,7 +28,6 @@ class FreeProxyList(Proxies):
         "Last_Checked": "last_checked"
     }
 
-
     def get_proxies(self) -> list:
         proxy_model_list = []
 

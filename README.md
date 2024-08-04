@@ -2,9 +2,9 @@
 
 A Python package for searching free proxies. This package allows you to retrieve and filter proxy servers based on 
 various criteria such as:
-- Country code
-- Anonymity level
-- HTTP or HTTPS.
+- Country code.
+- Anonymity level.
+- HTTP or HTTPS type.
 
 ## Table of Contents
 
@@ -26,9 +26,9 @@ It can be particularly useful for tasks such as web scraping, automated testing,
 
 ## Features
 
-- Filter proxies by country code
-- Filter proxies by anonymity level
-- Filter proxies by HTTPS support
+- Filter proxies by country code.
+- Filter proxies by anonymity level.
+- Filter proxies by HTTP/HTTPS type.
 
 ## Installation
 

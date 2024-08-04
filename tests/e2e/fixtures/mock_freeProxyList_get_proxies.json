@@ -1,0 +1,29 @@
+[
+    {
+          "ip": "192.168.1.1",
+          "port": "8081",
+          "country_code": "US",
+          "country": "United States",
+          "anonymity": "elite",
+          "https": true,
+          "source": "freeProxyList"
+    },
+    {
+          "ip": "192.168.1.2",
+          "port": "8082",
+          "country_code": "ES",
+          "country": "Spain",
+          "anonymity": "transparent",
+          "https": false,
+          "source": "freeProxyList"
+    },
+    {
+          "ip": "192.168.1.3",
+          "port": "8083",
+          "country_code": "FR",
+          "country": "France",
+          "anonymity": "anonymous",
+          "https": true,
+          "source": "freeProxyList"
+    }
+]

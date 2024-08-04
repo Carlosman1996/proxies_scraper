@@ -26,7 +26,7 @@ dynamic = ["dependencies"]
 dependencies = {file = ["requirements.txt"]}
 
 [project.optional-dependencies]
-dev = ["black", "bumpver", "isort", "pip-tools", "pytest"]
+dev = ["isort", "pip-tools", "pytest"]
 
 [project.urls]
 Homepage = "https://github.com/Carlosman1996/proxies_scraper"

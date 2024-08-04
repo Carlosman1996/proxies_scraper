@@ -1,0 +1,29 @@
+[
+    {
+        "ip": "192.168.2.1",
+        "port": "9091",
+        "country_code": "CA",
+        "country": "Canada",
+        "anonymity": "anonymous",
+        "https": false,
+        "source": "geonode"
+    },
+    {
+        "ip": "192.168.2.2",
+        "port": "9092",
+        "country_code": "BR",
+        "country": "Brazil",
+        "anonymity": "transparent",
+        "https": false,
+        "source": "geonode"
+    },
+    {
+        "ip": "192.168.2.3",
+        "port": "9093",
+        "country_code": "CA",
+        "country": "Canada",
+        "anonymity": "elite",
+        "https": true,
+        "source": "geonode"
+    }
+]

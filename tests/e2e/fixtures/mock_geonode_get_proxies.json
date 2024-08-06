@@ -4,7 +4,7 @@
         "port": "9091",
         "country_code": "CA",
         "country": "Canada",
-        "anonymity": "anonymous",
+        "anonymity": 2,
         "https": false,
         "source": "geonode"
     },
@@ -13,7 +13,7 @@
         "port": "9092",
         "country_code": "BR",
         "country": "Brazil",
-        "anonymity": "transparent",
+        "anonymity": 3,
         "https": false,
         "source": "geonode"
     },
@@ -22,7 +22,7 @@
         "port": "9093",
         "country_code": "CA",
         "country": "Canada",
-        "anonymity": "elite",
+        "anonymity": 1,
         "https": true,
         "source": "geonode"
     }

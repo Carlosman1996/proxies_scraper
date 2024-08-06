@@ -4,7 +4,7 @@
           "port": "8081",
           "country_code": "US",
           "country": "United States",
-          "anonymity": "elite",
+          "anonymity": 1,
           "https": true,
           "source": "freeProxyList"
     },
@@ -13,7 +13,7 @@
           "port": "8082",
           "country_code": "ES",
           "country": "Spain",
-          "anonymity": "transparent",
+          "anonymity": 3,
           "https": false,
           "source": "freeProxyList"
     },
@@ -22,7 +22,7 @@
           "port": "8083",
           "country_code": "FR",
           "country": "France",
-          "anonymity": "anonymous",
+          "anonymity": 2,
           "https": true,
           "source": "freeProxyList"
     }

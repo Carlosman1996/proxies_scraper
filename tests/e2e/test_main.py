@@ -1,7 +1,11 @@
+from pathlib import Path
+
 import pytest
 from unittest.mock import patch
 from proxies_scraper.main import get_proxies
 from proxies_scraper.utils.file_operation import JsonFileOperations
+
+FILE_DIR = Path(__file__).parent.absolute()
 
 
 @patch('proxies_scraper.main.FreeProxyList')
@@ -11,9 +15,9 @@ def test_get_proxies(mock_geonode, mock_free_proxy_list):
     geonode_instance = mock_geonode.return_value
 
     free_proxy_list_instance.get_proxies.return_value = (   # noqa
-        JsonFileOperations.read_file("./fixtures/mock_freeProxyList_get_proxies.json"))
+        JsonFileOperations.read_file(f"{FILE_DIR}/fixtures/mock_freeProxyList_get_proxies.json"))
     geonode_instance.get_proxies.return_value = (   # noqa
-        JsonFileOperations.read_file("./fixtures/mock_geonode_get_proxies.json"))
+        JsonFileOperations.read_file(f"{FILE_DIR}/fixtures/mock_geonode_get_proxies.json"))
 
     results = get_proxies()
     assert list(map(lambda proxy: proxy["ip"], results)) == ["192.168.1.1",
@@ -31,9 +35,9 @@ def test_get_proxies_filters_country_https(mock_geonode, mock_free_proxy_list):
     geonode_instance = mock_geonode.return_value
 
     free_proxy_list_instance.get_proxies.return_value = (   # noqa
-        JsonFileOperations.read_file("./fixtures/mock_freeProxyList_get_proxies.json"))
+        JsonFileOperations.read_file(f"{FILE_DIR}/fixtures/mock_freeProxyList_get_proxies.json"))
     geonode_instance.get_proxies.return_value = (   # noqa
-        JsonFileOperations.read_file("./fixtures/mock_geonode_get_proxies.json"))
+        JsonFileOperations.read_file(f"{FILE_DIR}/fixtures/mock_geonode_get_proxies.json"))
 
     results = get_proxies(country_codes_filter=["CA", "FR"],
                           https_filter=True)
@@ -47,9 +51,9 @@ def test_get_proxies_country_anonimity(mock_geonode, mock_free_proxy_list):
     geonode_instance = mock_geonode.return_value
 
     free_proxy_list_instance.get_proxies.return_value = (   # noqa
-        JsonFileOperations.read_file("./fixtures/mock_freeProxyList_get_proxies.json"))
+        JsonFileOperations.read_file(f"{FILE_DIR}/fixtures/mock_freeProxyList_get_proxies.json"))
     geonode_instance.get_proxies.return_value = (   # noqa
-        JsonFileOperations.read_file("./fixtures/mock_geonode_get_proxies.json"))
+        JsonFileOperations.read_file(f"{FILE_DIR}/fixtures/mock_geonode_get_proxies.json"))
 
     results = get_proxies(country_codes_filter=["CA", "FR", "US"],
                           anonymity_filter=[3, 1])

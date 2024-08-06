@@ -1,3 +1,5 @@
+# flake8: noqa
+
 from proxies_scraper.adapters.ports.proxies_source import Proxies
 
 

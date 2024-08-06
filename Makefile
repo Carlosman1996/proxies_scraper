@@ -18,3 +18,9 @@ package:
 	python3 -m pip install proxies_scraper[dev]
 	# Install package in editable mode:
 	python3 -m pip install -e .
+	# Create source archive and a wheel for the package
+	python3 -m build
+	# Check package description
+	twine check dist/*
+	# Upload package
+	twine upload -r testpypi dist/*

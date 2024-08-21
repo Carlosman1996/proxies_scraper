@@ -10,9 +10,12 @@ FILE_DIR = Path(__file__).parent.absolute()
 
 @pytest.fixture(autouse=True)
 def setup_mocks():
-    mock_free_proxy_list = patch("proxies_scraper.main.FreeProxyList").start()
-    mock_geonode = patch("proxies_scraper.main.Geonode").start()
+    patch_free_proxy_list = patch("proxies_scraper.main.FreeProxyList")
+    patch_geonode = patch("proxies_scraper.main.Geonode")
 
+    mock_free_proxy_list = patch_free_proxy_list.start()
+    mock_geonode = patch_geonode.start()
+    
     free_proxy_list_instance = mock_free_proxy_list.return_value
     geonode_instance = mock_geonode.return_value
 
@@ -23,8 +26,8 @@ def setup_mocks():
 
     yield
 
-    mock_free_proxy_list.stop()
-    mock_geonode.stop()
+    patch_free_proxy_list.stop()
+    patch_geonode.stop()
 
 
 def test_get_proxies():

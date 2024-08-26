@@ -24,3 +24,10 @@ package:
 	twine check dist/*
 	# Upload package
 	twine upload -r testpypi dist/*
+
+tox:
+	tox
+
+ruff:
+	# Automatically fixes code
+	ruff check --fix

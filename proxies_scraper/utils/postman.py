@@ -3,19 +3,24 @@ import requests
 
 class Postman:
     @staticmethod
-    def send_request(method: str,
-                     url: str,
-                     headers: dict = None,
-                     json: dict = None,
-                     timeout: int = 20,
-                     http_proxy: str = None,
-                     https_proxy: str = None,
-                     status_code_check: int = None):
-
+    def send_request(
+        method: str,
+        url: str,
+        headers: dict = None,
+        json: dict = None,
+        timeout: int = 20,
+        http_proxy: str = None,
+        https_proxy: str = None,
+        status_code_check: int = None,
+    ):
         if http_proxy is not None or https_proxy is not None:
             proxies = {
-                "http": "http://" + http_proxy if http_proxy is not None else "https://" + https_proxy,
-                "https": "https://" + https_proxy if https_proxy is not None else "http://" + http_proxy
+                "http": "http://" + http_proxy
+                if http_proxy is not None
+                else "https://" + https_proxy,
+                "https": "https://" + https_proxy
+                if https_proxy is not None
+                else "http://" + http_proxy,
             }
         else:
             proxies = None
@@ -26,7 +31,7 @@ class Postman:
             json=json,
             headers=headers,
             proxies=proxies,
-            timeout=timeout
+            timeout=timeout,
         )
 
         if status_code_check is not None and response.status_code != status_code_check:

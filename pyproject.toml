@@ -30,3 +30,38 @@ Homepage = "https://github.com/Carlosman1996/proxies_scraper"
 
 [tool.setuptools.packages.find]
 where = [""]
+
+# PYTEST
+
+[tool.pytest.ini_options]
+python_files = "test_*.py"
+python_functions = "test_*"
+addopts = "--cov-report term --cov-report xml:coverage.xml --cov=proxies_scraper --cov-fail-under=50 tests/"
+
+# PYTEST COVERAGE
+
+[tool.coverage.report]
+skip_empty = true
+exclude_also = [
+    "if __name__ == .__main__.:",
+]
+
+# RUFF
+
+[tool.ruff.lint]
+select = [
+    # "ALL" option enables all linters
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I"
+]
+ignore = ["E501"]

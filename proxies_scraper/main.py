@@ -8,7 +8,8 @@ from proxies_scraper.utils.timer import Timer
 
 # Set logger:
 logger = Logger(
-    module=FileOperations.get_file_name(__file__, False), level="INFO",
+    module=FileOperations.get_file_name(__file__, False),
+    level="INFO",
 )  # Set in configuration file
 
 
@@ -43,7 +44,9 @@ def get_proxies(
     :rtype: list of dict
     """
     logger.set_message(
-        level="INFO", message_level="SECTION", message="Start proxies scraper",
+        level="INFO",
+        message_level="SECTION",
+        message="Start proxies scraper",
     )
 
     # Configure port adapters
@@ -57,18 +60,25 @@ def get_proxies(
     # Process proxies from different sources:
     processed_proxies = []
     processed_proxies += freeProxyList_service.get_proxies(
-        country_codes_filter, anonymity_filter, https_filter,
+        country_codes_filter,
+        anonymity_filter,
+        https_filter,
     )
     processed_proxies += geonode_service.get_proxies(
-        country_codes_filter, anonymity_filter, https_filter,
+        country_codes_filter,
+        anonymity_filter,
+        https_filter,
     )
 
     logger.set_message(
-        level="INFO", message_level="SECTION", message="Finish proxies scraper",
+        level="INFO",
+        message_level="SECTION",
+        message="Finish proxies scraper",
     )
 
     logger.set_message(
-        level="INFO", message=f"Number of proxies scraped: {len(processed_proxies)}",
+        level="INFO",
+        message=f"Number of proxies scraped: {len(processed_proxies)}",
     )
 
     return processed_proxies

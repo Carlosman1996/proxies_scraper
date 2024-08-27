@@ -20,15 +20,11 @@ def setup_mocks():
     free_proxy_list_instance = mock_free_proxy_list.return_value
     geonode_instance = mock_geonode.return_value
 
-    free_proxy_list_instance.get_proxies.return_value = (
-        JsonFileOperations.read_file(
-            f"{FILE_DIR}/fixtures/mock_freeProxyList_get_proxies.json",
-        )
+    free_proxy_list_instance.get_proxies.return_value = JsonFileOperations.read_file(
+        f"{FILE_DIR}/fixtures/mock_freeProxyList_get_proxies.json",
     )
-    geonode_instance.get_proxies.return_value = (
-        JsonFileOperations.read_file(
-            f"{FILE_DIR}/fixtures/mock_geonode_get_proxies.json",
-        )
+    geonode_instance.get_proxies.return_value = JsonFileOperations.read_file(
+        f"{FILE_DIR}/fixtures/mock_geonode_get_proxies.json",
     )
 
     yield
@@ -59,7 +55,8 @@ def test_get_proxies_filters_country_https():
 
 def test_get_proxies_country_anonimity():
     results = get_proxies(
-        country_codes_filter=["CA", "FR", "US"], anonymity_filter=[3, 1],
+        country_codes_filter=["CA", "FR", "US"],
+        anonymity_filter=[3, 1],
     )
     assert list(map(lambda proxy: proxy["ip"], results)) == [
         "192.168.1.1",

@@ -4,7 +4,8 @@ import logging
 from proxies_scraper.utils.file_operation import FileOperations
 
 logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s : %(levelname)s : %(name)s : %(message)s",
+    level=logging.INFO,
+    format="%(asctime)s : %(levelname)s : %(name)s : %(message)s",
 )
 
 
@@ -22,7 +23,10 @@ class PrintColors(enum.Enum):
 
 class Logger:
     def __init__(
-        self, module: str = __name__, level: str = "INFO", logs_file_path: str = None,
+        self,
+        module: str = __name__,
+        level: str = "INFO",
+        logs_file_path: str = None,
     ):
         self.logger = logging.getLogger(module)
         self._set_logger_level(level)

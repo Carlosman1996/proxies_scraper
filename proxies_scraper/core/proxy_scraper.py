@@ -2,14 +2,14 @@ from proxies_scraper.adapters.ports.proxies_source import Proxies
 from proxies_scraper.utils.file_operation import FileOperations
 from proxies_scraper.utils.logger import Logger
 
-
 class ProxyScraper:
     def __init__(self, proxy_port: Proxies):
         self.proxy_port = proxy_port
 
         # Set logger:
         self._logger = Logger(
-            module=FileOperations.get_file_name(__file__, False), level="INFO",
+            module=FileOperations.get_file_name(__file__, False),
+            level="INFO",
         )  # Set in configuration file
 
     def _get_page_proxies(self):
@@ -63,7 +63,10 @@ class ProxyScraper:
 
         self._logger.set_message(level="INFO", message="Filter proxies")
         proxies = self._filter_proxies(
-            proxies, country_codes_filter, anonymity_filter, https_filter,
+            proxies,
+            country_codes_filter,
+            anonymity_filter,
+            https_filter,
         )
 
         return proxies

@@ -15,12 +15,16 @@ class Postman:
     ):
         if http_proxy is not None or https_proxy is not None:
             proxies = {
-                "http": "http://" + http_proxy
-                if http_proxy is not None
-                else "https://" + https_proxy,
-                "https": "https://" + https_proxy
-                if https_proxy is not None
-                else "http://" + http_proxy,
+                "http": (
+                    "http://" + http_proxy
+                    if http_proxy is not None
+                    else "https://" + https_proxy
+                ),
+                "https": (
+                    "https://" + https_proxy
+                    if https_proxy is not None
+                    else "http://" + http_proxy
+                ),
             }
         else:
             proxies = None

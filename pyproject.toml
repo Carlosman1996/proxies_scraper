@@ -65,3 +65,10 @@ select = [
     "I"
 ]
 ignore = ["E501"]
+
+# ISORT
+
+[tool.isort]
+known_first_party = [
+	"proxies_scraper",
+]

@@ -1,5 +1,6 @@
 # flake8: noqa
 
+# Project imports
 from proxies_scraper.adapters.ports.proxies_source import Proxies
 
 

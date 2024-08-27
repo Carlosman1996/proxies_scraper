@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 
+# Project imports
 from proxies_scraper.adapters.ports.proxies_source import Proxies
 from proxies_scraper.utils.postman import Postman
 from proxies_scraper.utils.time_operations import Time
@@ -33,7 +34,9 @@ class FreeProxyList(Proxies):
 
         # Get Free Proxy HTML:
         response = Postman.send_request(
-            method="GET", url=self.URL, status_code_check=200,
+            method="GET",
+            url=self.URL,
+            status_code_check=200,
         )
 
         html_doc = BeautifulSoup(response.content, "html.parser")
@@ -58,10 +61,12 @@ class FreeProxyList(Proxies):
             proxy_model["proxy"] = proxy_model["ip_address"] + ":" + proxy_model["port"]
             proxy_model["created_date"] = Time.get_datetime(self.TIMEZONE)
             proxy_model["anonymity"] = self._type_converter(
-                proxy_model["anonymity"], parameter_type="anonymity",
+                proxy_model["anonymity"],
+                parameter_type="anonymity",
             )
             proxy_model["https"] = self._type_converter(
-                proxy_model["https"], parameter_type="affirmation",
+                proxy_model["https"],
+                parameter_type="affirmation",
             )
             proxy_model["source"] = self.NAME
 

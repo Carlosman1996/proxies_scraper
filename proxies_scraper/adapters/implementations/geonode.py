@@ -36,7 +36,10 @@ class Geonode(Proxies):
             # Get Free Proxy HTML:
             url = self._set_url(page=page)
             response = Postman.send_request(
-                method="GET", url=url, headers=self.HEADERS, status_code_check=200,
+                method="GET",
+                url=url,
+                headers=self.HEADERS,
+                status_code_check=200,
             )
             response_data = response.json()
 
@@ -50,10 +53,12 @@ class Geonode(Proxies):
                 )
                 proxy_model["created_date"] = Time.get_datetime(self.TIMEZONE)
                 proxy_model["anonymity"] = self._type_converter(
-                    proxy_model["anonymity"], parameter_type="anonymity",
+                    proxy_model["anonymity"],
+                    parameter_type="anonymity",
                 )
                 proxy_model["https"] = self._type_converter(
-                    proxy_model["https"][0], parameter_type="protocol",
+                    proxy_model["https"][0],
+                    parameter_type="protocol",
                 )  # TODO: find element in list
                 proxy_model["last_checked"] = proxy_model["last_checked"]
                 proxy_model["source"] = self.NAME

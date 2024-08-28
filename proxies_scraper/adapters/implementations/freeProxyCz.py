@@ -1,12 +1,15 @@
 # flake8: noqa
 
+# Project imports
 from proxies_scraper.adapters.ports.proxies_source import Proxies
 
 
 # TODO:
 class FreeProxyList(Proxies):
-    URLS = ["http://free-proxy.cz/es/proxylist/country/all/http/date/all",
-            "http://free-proxy.cz/es/proxylist/country/all/https/date/all"]
+    URLS = [
+        "http://free-proxy.cz/es/proxylist/country/all/http/date/all",
+        "http://free-proxy.cz/es/proxylist/country/all/https/date/all",
+    ]
     TABLE_INDEXES = {
         0: "IP_Address",
         1: "Port",
@@ -18,7 +21,7 @@ class FreeProxyList(Proxies):
         7: "Speed",
         8: "Availability",
         9: "Response",
-        10: "Last_Checked"
+        10: "Last_Checked",
     }
 
     def _get_page_proxies(self, driver, proxies_df, max_size):
@@ -27,11 +30,10 @@ class FreeProxyList(Proxies):
         driver.find_element("xpath", "//span[@id='clickexport']").click()
 
         element = driver.find_element("xpath", "//div[@id='zkzk']")
-        proxies_ips = element.text.split('\n')
+        proxies_ips = element.text.split("\n")
 
         # Iterate over proxies table:
-        table_element = driver.find_element("xpath", "//table[@id='proxy_list']") \
-            .find_element(By.TAG_NAME, "tbody")
+        table_element = driver.find_element("xpath", "//table[@id='proxy_list']").find_element(By.TAG_NAME, "tbody")
         table_rows_elements = table_element.find_elements(By.TAG_NAME, "tr")
 
         iteration = 0
@@ -77,8 +79,9 @@ class FreeProxyList(Proxies):
             driver.get(url)
 
             # Get pages:
-            paginator_elements = driver.find_element("xpath", "//div[@class='paginator']"). \
-                                     find_elements(By.TAG_NAME, 'a')[:-1]
+            paginator_elements = driver.find_element("xpath", "//div[@class='paginator']").find_elements(
+                By.TAG_NAME, "a"
+            )[:-1]
 
             # Iterate over each page:
             for paginator_element in paginator_elements:

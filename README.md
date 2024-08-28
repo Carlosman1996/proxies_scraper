@@ -1,6 +1,6 @@
 # Proxies Scraper
 
-A Python package for searching free proxies. This package allows you to retrieve and filter proxy servers based on 
+A Python package for searching free proxies. This package allows you to retrieve and filter proxy servers based on
 various criteria such as:
 - Country code.
 - Anonymity level.
@@ -21,7 +21,7 @@ various criteria such as:
 
 ## Introduction
 
-Proxies Scraper is a versatile Python package designed to help developers find and filter free proxy servers. 
+Proxies Scraper is a versatile Python package designed to help developers find and filter free proxy servers.
 It can be particularly useful for tasks such as web scraping, automated testing, and browsing with privacy.
 
 ## Features
@@ -55,7 +55,7 @@ print(proxies)
 
 ### Advanced Example
 
-Get a proxies list filtered by country code and HTTPS support
+Get a proxies list filtered by country code and HTTPS support.
 
 ```python
 
@@ -67,8 +67,28 @@ proxies = get_proxies(
     https_filter=True
 )
 
-for proxy in proxies:
-    print(proxy)
+print(proxies)
+```
+
+### Result Example
+
+The `get_proxies` method will return the results with the following structure:
+
+```JSON
+[
+    {
+        "ip_address": "192.168.1.1",
+        "port": "8090",
+        "proxy": "192.168.1.1:8090",
+        "country_code": "GB",
+        "country": null,
+        "anonymity": 1,
+        "https": false,
+        "source": "webpage",
+        "last_checked": 1724839341,
+        "created_date": "2024-08-28 15:25:01.228439"
+    }
+]
 ```
 
 ## Contributing

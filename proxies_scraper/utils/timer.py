@@ -1,16 +1,17 @@
 import functools
 import time
+from collections.abc import Callable
 from dataclasses import dataclass, field
-from typing import Callable, ClassVar, Dict, Optional
+from typing import ClassVar
 
 
 @dataclass
 class Timer:
-    timers: ClassVar[Dict[str, float]] = dict()
-    name: Optional[str] = None
+    timers: ClassVar[dict[str, float]] = dict()
+    name: str | None = None
     text: str = "Elapsed time: {:0.4f} seconds\n"
-    logger: Optional[Callable[..., None]] = print
-    _start_time: Optional[float] = field(default=None, init=False, repr=False)
+    logger: Callable[..., None] | None = print
+    _start_time: float | None = field(default=None, init=False, repr=False)
 
     def __post_init__(self) -> None:
         """Add timer to dict of timers after initialization"""
@@ -28,6 +29,7 @@ class Timer:
 
     def __call__(self, func):
         """Support using Timer as a decorator"""
+
         @functools.wraps(func)
         def wrapper_timer(*args, **kwargs):
             with self:
@@ -38,14 +40,14 @@ class Timer:
     def start(self):
         """Start a new timer"""
         if self._start_time is not None:
-            raise Exception(f"Timer is running. Use .stop() to stop it")
+            raise Exception("Timer is running. Use .stop() to stop it")
 
         self._start_time = time.perf_counter()
 
     def stop(self) -> float:
         """Stop the timer, and report the elapsed time"""
         if self._start_time is None:
-            raise Exception(f"Timer is not running. Use .start() to start it")
+            raise Exception("Timer is not running. Use .start() to start it")
 
         elapsed_time = time.perf_counter() - self._start_time
         self._start_time = None

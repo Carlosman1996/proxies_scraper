@@ -1,6 +1,5 @@
 # main.py
-from proxies_scraper.adapters.implementations.freeProxyList import \
-    FreeProxyList
+from proxies_scraper.adapters.implementations.freeProxyList import FreeProxyList
 from proxies_scraper.adapters.implementations.geonode import Geonode
 from proxies_scraper.core.proxy_scraper import ProxyScraper
 from proxies_scraper.utils.file_operation import FileOperations

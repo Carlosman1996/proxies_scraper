@@ -69,6 +69,7 @@ ignore = ["E501"]
 # ISORT
 
 [tool.isort]
+line_length = 110
 known_first_party = [
 	"proxies_scraper",
 ]

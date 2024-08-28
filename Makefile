@@ -31,3 +31,7 @@ tox:
 ruff:
 	# Automatically fixes code
 	ruff check --fix
+
+pre-commit:
+	# Install to automatically check code at git commits
+	pre-commit install

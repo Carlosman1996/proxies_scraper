@@ -1,6 +1,7 @@
-import zoneinfo
 from datetime import datetime
 from pathlib import Path
+
+import zoneinfo
 
 ROOT_PATH = str(Path(__file__).parent.parent.resolve())
 

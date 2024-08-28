@@ -55,7 +55,7 @@ print(proxies)
 
 ### Advanced Example
 
-Get a proxies list filtered by country code and HTTPS support
+Get a proxies list filtered by country code and HTTPS support.
 
 ```python
 
@@ -67,8 +67,28 @@ proxies = get_proxies(
     https_filter=True
 )
 
-for proxy in proxies:
-    print(proxy)
+print(proxies)
+```
+
+### Result Example
+
+The `get_proxies` method will return the results with the following structure:
+
+```JSON
+[
+    {
+        "ip_address": "192.168.1.1",
+        "port": "8090",
+        "proxy": "192.168.1.1:8090",
+        "country_code": "GB",
+        "country": null,
+        "anonymity": 1,
+        "https": false,
+        "source": "webpage",
+        "last_checked": 1724839341,
+        "created_date": "2024-08-28 15:25:01.228439"
+    }
+]
 ```
 
 ## Contributing

@@ -48,9 +48,7 @@ class Geonode(Proxies):
             for proxy in response_data["data"]:
                 proxy_model = self._dict_mapper(proxy)
 
-                proxy_model["proxy"] = (
-                    proxy_model["ip_address"] + ":" + proxy_model["port"]
-                )
+                proxy_model["proxy"] = proxy_model["ip_address"] + ":" + proxy_model["port"]
                 proxy_model["created_date"] = Time.get_datetime(self.TIMEZONE)
                 proxy_model["anonymity"] = self._type_converter(
                     proxy_model["anonymity"],

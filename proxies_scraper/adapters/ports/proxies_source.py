@@ -40,12 +40,7 @@ class Proxies:
             return bool(value == "HTTPS" or value == "https")
 
         if parameter_type == "anonymity":
-            if (
-                value == "elite proxy"
-                or value == "elite"
-                or value == "Alto anonimato"
-                or value == "Elite"
-            ):
+            if value == "elite proxy" or value == "elite" or value == "Alto anonimato" or value == "Elite":
                 return Anonymity.ELITE.value
             if value == "transparent" or value == "Transparente":
                 return Anonymity.TRANSPARENT.value

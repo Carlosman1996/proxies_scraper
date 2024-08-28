@@ -34,15 +34,9 @@ class ProxyScraper:
         https_filter: bool | None,
     ):
         if isinstance(country_codes_filter, list):
-            proxies = [
-                proxy
-                for proxy in proxies
-                if proxy["country_code"] in country_codes_filter
-            ]
+            proxies = [proxy for proxy in proxies if proxy["country_code"] in country_codes_filter]
         if isinstance(anonymity_filter, list):
-            proxies = [
-                proxy for proxy in proxies if proxy["anonymity"] in anonymity_filter
-            ]
+            proxies = [proxy for proxy in proxies if proxy["anonymity"] in anonymity_filter]
         if isinstance(https_filter, bool):
             proxies = [proxy for proxy in proxies if proxy["https"] == https_filter]
         return proxies

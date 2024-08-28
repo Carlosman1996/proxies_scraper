@@ -75,3 +75,5 @@ ruff:
 pre-commit:
 	# Install to automatically check code at git commits
 	pre-commit install
+	# Run all hooks:
+	pre-commit run --all-files

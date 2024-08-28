@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "proxies-scraper"
-version = "1.0.0"
-description = "A Python package for proxies scripting"
+version = "1.0.2"
+description = "A Python package for proxies scraping"
 authors = ["Carlosman1996 <cmmolinas01@gmail.com>"]
 readme = "README.md"
 

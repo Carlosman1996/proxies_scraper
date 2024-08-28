@@ -14,6 +14,7 @@ various criteria such as:
 - [Usage](#usage)
   - [Basic Example](#basic-example)
   - [Advanced Example](#advanced-example)
+  - [Return Example](#advanced-example)
 - [Function Documentation](#function-documentation)
   - [`get_proxies`](#get_proxies)
 - [Contributing](#contributing)
@@ -70,7 +71,7 @@ proxies = get_proxies(
 print(proxies)
 ```
 
-### Result Example
+### Return Example
 
 The `get_proxies` method will return the results with the following structure:
 

@@ -44,7 +44,7 @@ class FreeProxyList(Proxies):
         # Iterate over proxies table:
         table = (
             html_doc.find("section", id="list")
-            .findChildren("table")[0]
+            .findChildren("table")[0]  # type: ignore
             .findChildren("tbody")[0]
         )
         table_rows = table.findChildren("tr")

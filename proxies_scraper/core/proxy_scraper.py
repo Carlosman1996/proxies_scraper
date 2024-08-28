@@ -2,6 +2,7 @@ from proxies_scraper.adapters.ports.proxies_source import Proxies
 from proxies_scraper.utils.file_operation import FileOperations
 from proxies_scraper.utils.logger import Logger
 
+
 class ProxyScraper:
     def __init__(self, proxy_port: Proxies):
         self.proxy_port = proxy_port
@@ -28,9 +29,9 @@ class ProxyScraper:
     @staticmethod
     def _filter_proxies(
         proxies: list,
-        country_codes_filter: list,
-        anonymity_filter: list,
-        https_filter: bool,
+        country_codes_filter: list | None,
+        anonymity_filter: list | None,
+        https_filter: bool | None,
     ):
         if isinstance(country_codes_filter, list):
             proxies = [
@@ -48,9 +49,9 @@ class ProxyScraper:
 
     def get_proxies(
         self,
-        country_codes_filter: list = None,
-        anonymity_filter: list = None,
-        https_filter: bool = None,
+        country_codes_filter: list | None = None,
+        anonymity_filter: list | None = None,
+        https_filter: bool | None = None,
     ):
         self._logger.set_message(
             level="INFO",

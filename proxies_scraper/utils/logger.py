@@ -26,7 +26,7 @@ class Logger:
         self,
         module: str = __name__,
         level: str = "INFO",
-        logs_file_path: str = None,
+        logs_file_path: str | None = None,
     ):
         self.logger = logging.getLogger(module)
         self._set_logger_level(level)
@@ -34,8 +34,6 @@ class Logger:
         if logs_file_path is not None:
             self.file_path = f"{logs_file_path}/{module}_logfile.log"
             self._set_logs_file()
-        else:
-            self.file_path = logs_file_path
 
     def __call__(self, message: str) -> None:
         self.set_message(level="INFO", message=message)
@@ -58,16 +56,16 @@ class Logger:
 
     def _set_logs_file(self):
         FileOperations.write_file(self.file_path, "FILE CREATION\n\n")
-        if self.file_path is not None:
-            # Define file handler and set formatter:
-            file_handler = logging.FileHandler(self.file_path)
-            formatter = logging.Formatter(
-                "%(asctime)s : %(levelname)s : %(name)s : %(message)s",
-            )
-            file_handler.setFormatter(formatter)
 
-            # Add file handler to logger:
-            self.logger.addHandler(file_handler)
+        # Define file handler and set formatter:
+        file_handler = logging.FileHandler(self.file_path)
+        formatter = logging.Formatter(
+            "%(asctime)s : %(levelname)s : %(name)s : %(message)s",
+        )
+        file_handler.setFormatter(formatter)
+
+        # Add file handler to logger:
+        self.logger.addHandler(file_handler)
 
     def set_message(self, level="INFO", message_level=None, message=""):
         # Modify message depending on level:

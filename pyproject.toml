@@ -72,3 +72,8 @@ ignore = ["E501"]
 known_first_party = [
 	"proxies_scraper",
 ]
+
+# MYPY
+
+[tool.mypy]
+exclude = "freeProxyCz.py"

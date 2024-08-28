@@ -12,7 +12,7 @@ class Anonymity(enum.Enum):
 class Proxies:
     NAME = ""
     URL = ""
-    HEADERS = {}
+    HEADERS: dict[str, str] = {}
     MODEL = {
         "ip_address": None,
         "port": None,
@@ -24,7 +24,7 @@ class Proxies:
         # "available": None, # TODO
         "source": None,
     }
-    MODEL_MAPPER = {}
+    MODEL_MAPPER: dict[str, str] = {}
     TIMEZONE = "Europe/Madrid"
 
     @staticmethod

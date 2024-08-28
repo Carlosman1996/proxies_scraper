@@ -1,5 +1,6 @@
 # main.py
-from proxies_scraper.adapters.implementations.freeProxyList import FreeProxyList
+from proxies_scraper.adapters.implementations.freeProxyList import \
+    FreeProxyList
 from proxies_scraper.adapters.implementations.geonode import Geonode
 from proxies_scraper.core.proxy_scraper import ProxyScraper
 from proxies_scraper.utils.file_operation import FileOperations
@@ -15,9 +16,9 @@ logger = Logger(
 
 @Timer(logger=logger, text="Proxies found in {:.2f} seconds\n")
 def get_proxies(
-    country_codes_filter: list[str] = None,
-    anonymity_filter: list[int] = None,
-    https_filter: bool = None,
+    country_codes_filter: list[str] | None = None,
+    anonymity_filter: list[int] | None = None,
+    https_filter: bool | None = None,
 ) -> list[dict]:
     """Retrieve a list of proxies based on the provided filters.
 

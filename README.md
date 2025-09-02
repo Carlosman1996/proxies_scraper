@@ -103,4 +103,4 @@ Contributions are welcome! Please follow these steps to contribute:
 5. Push your changes to your forked repository.
 6. Create a pull request to the main repository.
 
-Please make sure your code adheres to the project's coding standards and includes appropriate tests.
+Please make sure your code adheres to the project's coding standards and includes appropriate tests..
